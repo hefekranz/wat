@@ -1,0 +1,7 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+
+profileDir=$scriptDir/profiles/whatsapp
+mkdir -p $profileDir
+
+google-chrome --user-data-dir=$profileDir --app=https://web.whatsapp.com/ </dev/null &>/dev/null &
