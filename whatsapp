@@ -1,7 +1,13 @@
 #!/bin/bash
+set -e
+
+required=google-chrome
+
+command -v ${required} >/dev/null 2>&1 || { echo >&2 "${required} not in path.  Aborting."; exit 1; }
+
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
 profileDir=$scriptDir/profiles/whatsapp
 mkdir -p $profileDir
 
-google-chrome --user-data-dir=$profileDir --app=https://web.whatsapp.com/ </dev/null &>/dev/null &
+google-chrome --user-data-dir=$profileDir --app=https://web.whatsapp.com/
